@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+tr:first-child{
+background-color:black;
+color:white;
+font-weight:bold;
+font-size:18px;
+}
+table,td{
+width:300px;
+border:1px solid black;
+}
+</style>
+	
+</head>
+<body>
+<input type="button" value="Add Row" onclick="addRow('tableID')" />
+<table id="tableID">
+	<tr>
+		<td>Serial Number</td>
+		<td>Action</td>
+	</tr>
+	<tr>	
+		<td>1</td>
+		<td><input type="button" value="Delete Row" onclick="deleteRow(this)" /></td>
+	</tr>
+</table>
+<script>
+function addRow(tableID) 
+{
+	var table = document.getElementById(tableID);
+	var rowCount = table.rows.length;
+	var row = table.insertRow(rowCount);
+	var cell1 = row.insertCell(0);
+	var cell2 = row.insertCell(1);
+	var element1 = document.createElement("input");
+	element1.type = "button";
+	element1.value = "Delete Row";
+	element1.onclick=function(){deleteRow(this)}        
+	cell2.appendChild(element1);
+	rowCount=table.rows.length;
+	sort(table);
+}
+function deleteRow(myBtn) 
+{
+	var table = document.getElementById('tableID');
+	var rindex=myBtn.parentElement.parentElement.rowIndex;
+	table.deleteRow(rindex);
+	sort(table);
+}
+function sort(table)
+{
+	var rowCount = table.rows.length;
+	for(var i=0;i<rowCount;i++)
+	{
+		table.rows[i+1].cells[0].innerHTML =i+1;
+	}
+}
+</script>
+</body>
+</html>

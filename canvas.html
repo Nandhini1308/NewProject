@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+<style>
+body
+{
+	width:500px;
+	height:300px;
+	border:1px solid grey;
+	margin:auto;
+}
+button
+{
+	padding:10px;
+	margin-left:15px;
+	margin-top:10px;
+	width:100px;
+	border:2px solid black;
+}
+canvas
+{
+	width:500px;
+	height:300px;
+}
+</style>
+<body>
+
+<button onclick="drawRect(x,y,w,h)">Draw</button>
+<button onclick="sleft()">Shift Left</button>
+<button onclick="sright()">Shift Right</button>
+<button onclick="rem()">Remove</button> <br></br>
+
+<canvas id="myCanvas"></canvas>
+<script>
+cn = document.getElementById('myCanvas');
+c = cn.getContext('2d');
+x = 100;
+y = 5;
+w = 70;
+h = 50;
+function drawRect(x,y,w,h) 
+{
+	c.clearRect(0,0, 500, 500);
+    c.fillStyle = 'red';
+    c.fillRect(x, y, w, h);
+}
+function sleft() 
+{
+	x--;
+	drawRect(x,y,w,h);
+}
+function sright() 
+{
+	x++;
+	drawRect(x,y,w,h);	
+}
+function rem() 
+{   
+    c.clearRect(0,0, 500, 500);
+}
+</script>
+</body>
